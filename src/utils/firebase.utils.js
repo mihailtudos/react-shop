@@ -3,7 +3,7 @@ import { initializeApp } from "firebase/app";
 
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
-import {getAuth, signInWithRedirect, signInWithPopup, GoogleAuthProvider } from 'firebase/auth';
+import {getAuth, signInWithPopup, GoogleAuthProvider } from 'firebase/auth';
 import {
 	getFirestore,
 	doc,
@@ -31,7 +31,6 @@ googleProvider.setCustomParameters({
 
 export const auth = getAuth();
 export const signInWithGooglePopup = () => signInWithPopup(auth, googleProvider);
-export const signInWithGoogleRedirect = () => signInWithRedirect(auth, googleProvider);
 
 export const db = getFirestore();
 
