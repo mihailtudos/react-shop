@@ -9,6 +9,7 @@ export const UserContext = createContext({
 export const UserProvider = ({ children }) => {
 	const [currentUser, setCurrentUser] = useState(null);
 	const value = {currentUser, setCurrentUser};
+
 	useEffect(() => {
 		const unSubscribe  = onAuthStateChangeListener((user) => {
 			if (user) {
@@ -19,5 +20,6 @@ export const UserProvider = ({ children }) => {
 		});
 		return unSubscribe;
 	}, []);
+
 	return <UserContext.Provider value={value}>{ children }</UserContext.Provider>
 }
