@@ -4,7 +4,6 @@ import Navigation from "./components/routes/navigation/navigation.component";
 import Authentication from "./components/routes/authentication/authentication.component";
 import Shop from "./components/routes/shop/shop.component";
 import Checkout from "./components/routes/checkout/checkout.component";
-import CategoryPreview from "./components/category-preview/category-preview.component";
 
 const App = () => {
 	return (

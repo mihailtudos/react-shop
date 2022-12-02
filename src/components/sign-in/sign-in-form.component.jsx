@@ -2,7 +2,7 @@ import { useState} from "react";
 import { signInAuthWithEmailAndPassword, signInWithGooglePopup} from "../../utils/firebase.utils";
 import FormInput from "../form-input/form-input.component";
 import './sign-in-form.styles.scss';
-import  Button, {BUTTON_TYPE_CLASSES } from "../button/button.component";
+import  Button from "../button/button.component";
 
 const defaultFormFields = {
 	email: '',
@@ -30,7 +30,7 @@ const SignInForm = () => {
 		event.preventDefault();
 
 		try {
-			const {user} = await signInAuthWithEmailAndPassword(email, password)
+			await signInAuthWithEmailAndPassword(email, password)
 			resetFormFields();
 		}catch (error) {
 			switch (error.code) {
