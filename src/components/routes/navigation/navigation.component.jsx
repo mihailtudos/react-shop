@@ -1,6 +1,6 @@
 import { Outlet, Link } from "react-router-dom";
 import {Fragment, useContext} from "react";
-import './navigation.styles.scss';
+import {NavigationContainer, NavLinks, NavLink, LogoContainer} from "./navigation.styles";
 
 //cart components
 import CartIcon from "../../cart-icon/cart-icon.component";
@@ -17,21 +17,21 @@ const Navigation = () => {
 
 	return (
 		<Fragment>
-			<nav className='navigation'>
-				<Link to='/' className='logo-container'>
+			<NavigationContainer>
+				<LogoContainer to='/'>
 					<Logo className='logo'/>
-				</Link>
-				<div className='nav-links-container'>
-					<Link to='/shop' className='nav-link'>Shop</Link>
+				</LogoContainer>
+				<NavLinks>
+					<NavLink to='/shop' >Shop</NavLink>
 					{
 						currentUser ?
-							(<span className='nav-link' onClick={  async () => await signOutUser() }>Sign out</span>) :
-							(<Link to='/auth' className='nav-link'>Sign in</Link>)
+							(<NavLink as='span' onClick={  async () => await signOutUser() }>Sign out</NavLink>) :
+							(<NavLink to='/auth' >Sign in</NavLink>)
 					}
 					<CartIcon/>
-				</div>
+				</NavLinks>
 				{showCart && <CartDropdown/>}
-			</nav>
+			</NavigationContainer>
 			<Outlet/>
 		</Fragment>
 	)
