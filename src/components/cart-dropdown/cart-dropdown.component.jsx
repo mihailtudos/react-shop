@@ -13,6 +13,7 @@ const CartDropdown = () => {
 	};
 
 	const {cartItems} = useContext(CartContext);
+
 	return (
 		<CartDropdownContainer>
 			<CartItemContainer>

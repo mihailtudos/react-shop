@@ -4,9 +4,9 @@ import {CartIconContainer, ItemCount, ShoppingIcon} from "./cart-icon.styles";
 
 
 const CartIcon = () => {
-	const {cartCount, showCart, setShowCart} = useContext(CartContext);
+	const {cartCount, isCartOpen, setShowCart} = useContext(CartContext);
 
-	const handleCartIconClick = () => setShowCart(!showCart);
+	const handleCartIconClick = () => setShowCart(!isCartOpen);
 
 	return (
 		<CartIconContainer>
