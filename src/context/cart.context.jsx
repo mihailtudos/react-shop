@@ -1,4 +1,4 @@
-import {createContext, useEffect, useReducer, useState} from "react";
+import {createContext, useReducer} from "react";
 
 const addCartItem = (cartItems, productToAdd) => {
 	//check if cartItems contains productToAdd
