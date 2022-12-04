@@ -1,15 +1,16 @@
 import {createContext, useEffect, useReducer} from "react";
 import {createUserDocumentFromAuth, onAuthStateChangeListener} from "../utils/firebase.utils";
 import {createAction} from "../utils/reducer/reducer.util";
+import {USER_ACTIONS_REDUCER} from "../store/user/user.types";
 
 export const UserContext = createContext({
 	currentUser: null,
 	setCurrentUser: () => null
 });
 
-export const USER_ACTIONS_REDUCER = {
-	'SET_CURRENT_USER': 'SET_CURRENT_USER'
-}
+// export const USER_ACTIONS_REDUCER = {
+// 	'SET_CURRENT_USER': 'SET_CURRENT_USER'
+// }
 
 const userReducer = (state, action) => {
 	const { type, payload } = action;
