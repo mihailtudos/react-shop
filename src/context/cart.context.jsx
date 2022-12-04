@@ -1,4 +1,5 @@
-import {createContext, useEffect, useReducer, useState} from "react";
+import {createContext, useReducer} from "react";
+import {createAction} from "../utils/reducer/reducer.util";
 
 const addCartItem = (cartItems, productToAdd) => {
 	//check if cartItems contains productToAdd
@@ -58,7 +59,7 @@ export const cartReducer = (state, action) => {
 		case CART_ACTIONS_REDUCER.TOGGLE_CART:
 			return {
 				...state,
-				isCartOpen: !state.isCartOpen
+				isCartOpen: payload
 			}
 		case CART_ACTIONS_REDUCER.SET_CART_ITEM:
 
@@ -82,13 +83,13 @@ export const CartProvider = ({ children }) => {
 	const { cartItems, cartCount, cartAmount, isCartOpen } = state;
 
 	const updateCartItems = (newCartItems) => {
-		const updatedCart = {
-			cartItems: newCartItems,
-			cartAmount: getNewCartAmount(newCartItems),
-			cartCount: getCartCount(newCartItems)
-		};
-
-		dispatch({type: CART_ACTIONS_REDUCER.SET_CART_ITEM, payload: updatedCart});
+		dispatch(
+			createAction(CART_ACTIONS_REDUCER.SET_CART_ITEM, {
+				cartItems: newCartItems,
+				cartAmount: getNewCartAmount(newCartItems),
+				cartCount: getCartCount(newCartItems)
+			}
+		));
 	}
 
 	const addItemToCart = (productToAdd) => {
@@ -106,8 +107,8 @@ export const CartProvider = ({ children }) => {
 		updateCartItems(newCartItems);
 	};
 
-	const setShowCart = () => {
-		dispatch({type: CART_ACTIONS_REDUCER.TOGGLE_CART})
+	const setShowCart = (bool) => {
+		dispatch(createAction(CART_ACTIONS_REDUCER.TOGGLE_CART, bool))
 	};
 
 	const value = {isCartOpen, setShowCart, addItemToCart, cartItems, cartCount, cartAmount, removeItemFromCart, clearItemFromCart};
