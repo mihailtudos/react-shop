@@ -12,16 +12,14 @@ import {useDispatch} from "react-redux";
 const App = () => {
 	const dispatch = useDispatch();
 
+	//gets the user logged in and stored in the redux store
 	useEffect(() => {
-
-		const unSubscribe  = onAuthStateChangeListener((user) => {
+		return onAuthStateChangeListener((user) => {
 			if (user) {
 				createUserDocumentFromAuth(user);
 			}
 			dispatch(setCurrentUser(user));
-
 		});
-		return unSubscribe;
 	});
 
 	return (
